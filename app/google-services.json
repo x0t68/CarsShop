@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "503558560887",
+    "firebase_url": "https://car-store-6d3f6-default-rtdb.firebaseio.com",
+    "project_id": "car-store-6d3f6",
+    "storage_bucket": "car-store-6d3f6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503558560887:android:8985729a13b87876cf3a72",
+        "android_client_info": {
+          "package_name": "com.x2t68.carshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARWizoexi1AAu5X_oa8icMQE571o7O7no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503558560887:android:e1425cb9285d42ffcf3a72",
+        "android_client_info": {
+          "package_name": "com.x2t68.shopstoreapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARWizoexi1AAu5X_oa8icMQE571o7O7no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
