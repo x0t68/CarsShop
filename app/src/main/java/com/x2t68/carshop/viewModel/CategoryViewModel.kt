@@ -13,8 +13,8 @@ class CategoryViewModel: ViewModel() {
     private val _categories = mutableStateOf<List<CategoryModel>>(emptyList())
     val categories: State<List<CategoryModel>> = _categories
 
-            private val _isloading=mutableStateOf(true)
-    val isLoading:State<Boolean> = _isloading
+            private val _isLoading=mutableStateOf(true)
+    val isLoading:State<Boolean> = _isLoading
 
     init {
         loadCategories()
@@ -30,11 +30,11 @@ class CategoryViewModel: ViewModel() {
                     it.getValue(CategoryModel::class.java)?.let{item->list.add(item)}
                 }
                 _categories.value=list
-                _isloading.value=false
+                _isLoading.value=false
             }
 
             override fun onCancelled(error: DatabaseError) {
-               _isloading.value = false
+               _isLoading.value = false
             }
 
         })
