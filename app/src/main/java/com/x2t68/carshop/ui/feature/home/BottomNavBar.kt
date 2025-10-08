@@ -6,14 +6,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialogDefaults.containerColor
+// تم حذف الـ imports الخاطئة من هنا
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextFieldDefaults.contentPadding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,31 +23,32 @@ import com.x2t68.carshop.R
 @Composable
 @Preview
 fun BottomNavBar(
-    onProfileClick: () -> Unit= {},
-    modifier: Modifier= Modifier
-){
+    onProfileClick: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
     Surface(
-        modifier= modifier,
+        modifier = modifier,
         color = Color.Transparent,
-        shape= RoundedCornerShape(50.dp),
+        shape = RoundedCornerShape(50.dp),
         shadowElevation = 8.dp
     ) {
         BottomAppBar(
+            modifier = Modifier.clip(RoundedCornerShape(50.dp)),
             containerColor = Color.Black,
             contentPadding = PaddingValues(horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
             Row(
-               modifier =  Modifier
-                     .fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .height(60.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
-            ) { Icon(
-                painter = painterResource(id = R.drawable.btn_1), // تمرير معرّف الصورة فقط
-                contentDescription = null, // الوصف يمرر هنا
-                tint = Color.White // واللون يمرر هنا
-            )
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.btn_1),
+                    contentDescription = null,
+                    tint = Color.White
+                )
                 Icon(
                     painter = painterResource(id = R.drawable.btn_2),
                     contentDescription = null,
@@ -64,7 +65,6 @@ fun BottomNavBar(
                     tint = Color.White
                 )
             }
-
         }
     }
 }

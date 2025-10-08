@@ -35,7 +35,8 @@ import com.x2t68.carshop.viewModel.CategoryViewModel
 
 fun MainScreen(onCarClick:(CarModel)-> Unit
                ,carViewModel: CarViewModel,
-               categoryViewModel: CategoryViewModel){
+               categoryViewModel: CategoryViewModel,
+               onProfileClick :()->Unit){
 
     val categories by categoryViewModel.categories
     val isLoadingCategory by categoryViewModel.isLoading
@@ -93,5 +94,11 @@ Box(modifier = Modifier.fillMaxWidth(),
                 }
             }
         }
+        BottomNavBar(
+            onProfileClick = onProfileClick,
+            modifier = Modifier
+                .align(Alignment.BottomCenter )
+                .padding(horizontal = 16.dp, vertical = 24.dp)
+        )
     }
 }

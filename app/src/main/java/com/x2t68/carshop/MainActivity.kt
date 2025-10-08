@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.x2t68.carshop.navigation.AppNavGraph
 import com.x2t68.carshop.ui.feature.home.MainScreen
 import com.x2t68.carshop.ui.theme.CarshopTheme
 import com.x2t68.carshop.viewModel.CarViewModel
@@ -22,11 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
-            val categoryViewModel: CategoryViewModel = viewModel()
-            val carViewModel: CarViewModel=viewModel()
-
-            MainScreen(onCarClick = {},carViewModel,categoryViewModel)
+            AppNavGraph()
         }
 
     }
