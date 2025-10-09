@@ -1,5 +1,6 @@
 package com.x2t68.carshop.ui.feature.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
 import com.x2t68.carshop.R
 
 @Composable
@@ -60,6 +62,9 @@ fun BottomNavBar(
                     tint = Color.White
                 )
                 Icon(
+                  modifier = Modifier
+                      .clickable{ onProfileClick() }
+                          ,
                     painter = painterResource(id = R.drawable.btn_4),
                     contentDescription = null,
                     tint = Color.White

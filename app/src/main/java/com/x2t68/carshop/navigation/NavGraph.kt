@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.x2t68.carshop.Domain.CarModel
 import com.x2t68.carshop.ui.feature.detail.DetailScreen
 import com.x2t68.carshop.ui.feature.home.MainScreen
+import com.x2t68.carshop.ui.feature.profile.ProfileScreen
 import com.x2t68.carshop.viewModel.CarViewModel
 import com.x2t68.carshop.viewModel.CategoryViewModel
 
@@ -28,7 +29,7 @@ fun AppNavGraph() {
             )
         }
         composable(Screens.PROFILE) {
-
+            ProfileScreen(onBack = { navController.popBackStack() })
         }
         // Define the route for the detail screen, including the carId argument
         composable(Screens.DETAIL) {
