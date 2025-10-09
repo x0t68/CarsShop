@@ -3,7 +3,7 @@
 
 ## 🖼️ Screenshots  
 
-[App](./images/App.jpg) 
+![App](./images/App.png) 
 
 An Android e-commerce application for browsing and viewing cars, built with **Jetpack Compose**, **MVVM Architecture**, **Firebase**, and **Cloudinary**.  
 This project demonstrates modern Android development practices and clean architecture for scalability and maintainability.  
