@@ -1,13 +1,20 @@
 package com.x2t68.carshop.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.x2t68.carshop.Domain.CarModel
 import androidx.compose.runtime.State
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import androidx.lifecycle.viewModelScope
+import com.x2t68.carshop.Domain.ApiResponse
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.get
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
 
 class CarViewModel: ViewModel() {
     private val _cars= mutableStateOf<List<CarModel>>(emptyList())
@@ -16,29 +23,32 @@ class CarViewModel: ViewModel() {
     private val _isLoading= mutableStateOf(true)
     val isLoading:State<Boolean> = _isLoading
 
+    private val client = HttpClient(CIO) {
+        install(ContentNegotiation) {
+            json(Json {
+                ignoreUnknownKeys = true
+                isLenient = true
+                prettyPrint = true
+                allowSpecialFloatingPointValues = true
+                useAlternativeNames = false
+            })
+        }
+    }
+
     init {
         fetchCars()
     }
 
     private fun fetchCars() {
-        val ref= FirebaseDatabase.getInstance().getReference("Cars")
-
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val temp=mutableListOf<CarModel>()
-                for (child in snapshot.children){
-                    child.getValue(CarModel::class.java)?.let{
-                        temp.add(it)
-                    }
-                }
-            _cars.value = temp
-                _isLoading.value= false
+        viewModelScope.launch {
+            try {
+                val response: ApiResponse = client.get("https://dsdecifkcpbknjmfecdn.supabase.co/storage/v1/object/public/products/car-store-6d3f6-default-rtdb-export%20(2).json").body()
+                _cars.value = response.cars
+                _isLoading.value = false
+            } catch (e: Exception) {
+                Log.e("CarViewModel", "Error fetching cars", e)
+                _isLoading.value = false
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                     _isLoading.value= false
-            }
-
-        })
         }
     }
+}
